@@ -1,3 +1,11 @@
 spring:
   application:
     name: dualmongo
+  data:
+    mongodb:
+      core:
+        uri: mongodb://coreuser:corepassword@core-mongo:27017/core
+        database: core
+      support:
+        uri: mongodb://supportuser:supportpassword@support-mongo:27017/support
+        database: support

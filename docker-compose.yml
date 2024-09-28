@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  core-mongo:
+    image: mongo:8.0
+    container_name: core-mongo
+    environment:
+      MONGO_INITDB_DATABASE: core
+      MONGO_INITDB_ROOT_USERNAME: coreuser
+      MONGO_INITDB_ROOT_PASSWORD: corepassword
+    ports:
+      - '27018:27017'
+    volumes:
+      - core-mongo-data:/data/db
+    networks:
+      - app-network
+
+  support-mongo:
+    image: mongo:8.0
+    container_name: support-mongo
+    environment:
+      MONGO_INITDB_DATABASE: support
+      MONGO_INITDB_ROOT_USERNAME: supportuser
+      MONGO_INITDB_ROOT_PASSWORD: supportpassword
+    ports:
+      - '27019:27017'
+    volumes:
+      - support-mongo-data:/data/db
+    networks:
+      - app-network
+
+  app:
+    build: .
+    container_name: kotlin-app
+    ports:
+      - '8080:8080'
+    depends_on:
+      - core-mongo
+      - support-mongo
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+    networks:
+      - app-network
+
+volumes:
+  core-mongo-data:
+  support-mongo-data:
+
+networks:
+  app-network:
+    driver: bridge
