@@ -4,8 +4,8 @@ spring:
   data:
     mongodb:
       core:
-        uri: mongodb://coreuser:corepassword@core-mongo:27017/core
+        uri: mongodb://coreuser:corepassword@core-mongo:27017/core?authSource=admin
         database: core
       support:
-        uri: mongodb://supportuser:supportpassword@support-mongo:27017/support
+        uri: mongodb://supportuser:supportpassword@support-mongo:27017/support?authSource=admin
         database: support

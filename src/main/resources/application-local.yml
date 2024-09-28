@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: dualmongo
+  data:
+    mongodb:
+      core:
+        uri: mongodb://coreuser:corepassword@localhost:27018/core?authSource=admin
+        database: core
+      support:
+        uri: mongodb://supportuser:supportpassword@localhost:27019/support?authSource=admin
+        database: support

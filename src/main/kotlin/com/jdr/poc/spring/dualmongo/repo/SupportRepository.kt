@@ -11,8 +11,7 @@ class SupportRepository(
 ) {
 
     fun save(entity: SupportEntity): SupportEntity {
-        supportMongoTemplate.save(entity)
-        return entity
+        return supportMongoTemplate.save(entity)
     }
 
     fun findAll(): List<SupportEntity> {

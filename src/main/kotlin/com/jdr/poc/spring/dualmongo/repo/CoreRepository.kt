@@ -11,8 +11,7 @@ class CoreRepository(
 ) {
 
     fun save(entity: CoreEntity): CoreEntity {
-        coreMongoTemplate.save(entity)
-        return entity
+        return coreMongoTemplate.save(entity)
     }
 
     fun findAll(): List<CoreEntity> {
